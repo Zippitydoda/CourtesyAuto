@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Omnique SMS Alert",
+    "description": "Open Chat Window",
+    "version": "1.0",
+    "icons": {
+        "16": "LogoSmall_Inverted.png",
+        "48": "LogoSmall_Inverted.png",
+        "128": "LogoSmall_Inverted.png"
+    },
+    "permissions": ["alarms", "notifications", "tabs", "activeTab"],
+    "content_scripts": [
+        {
+            "matches": ["https://app.omnique.com/*"],
+            "js": ["alert.js"],
+            "run_at": "document_end"
+        }
+    ]
+}
