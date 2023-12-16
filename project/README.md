@@ -1,9 +1,5 @@
 # Omnique Alert Reminder Version 1.0
 
-#### Video Demo:  <URL HERE>
-
-#### Description:
-
 _If you intend to get down to buisness skip to Software Overview_ otherwise let me explain to you what a chrome extension does:
 
 >Chrome Extensions are small software programs that customize the browsing experience. They enable users to tailor Chrome functionality and behavior to individual needs or preferences. They are built on web technologies such as HTML, JavaScript, and CSS.
