@@ -33,9 +33,10 @@ This chrome extension is _only usable_ with the web page [Omnique](https://app.o
 
 1. Clone this repository.
 2. Load this directory in Chrome as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked).
-3. To ensure the extension is running properly check the web page console to see if the SMS count matches the SMS notification badge in the upper right hand corner of the page. ![SMS notification badge](zeroMessage.png)
-4. Send a test text message to the chat.
-5. Wait for the message to be marked as received in the upper right hand corner of the page.
-6. The notification should now show: ![New SMS](newMessage.png)
-7. Refresh the page, if the extension is working properly the chat window should open displaying the new Message in a new tab.
+3. To ensure the extension is running properly check the web page console to see if the SMS count matches the SMS notification badge in the upper right hand corner of the page.
+4. The notification should show: ![SMS notification badge](zeroMessage.png)
+5. Send a test text message to the chat.
+6. Wait for the message to be marked as received in the upper right hand corner of the page.
+7. The notification should now show: ![New SMS](newMessage.png)
+8. Refresh the page, if the extension is working properly the chat window should open displaying the new Message in a new tab.
 
