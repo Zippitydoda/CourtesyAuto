@@ -12,8 +12,6 @@ _If you intend to get down to buisness skip to Software Overview_ otherwise let 
 
 > Extensions are distributed through the Chrome Developer Dashboard and published to the Chrome Web Store
 
-test
-
 ## Software Overview
 
 The purpose of this program is to remind the user that they have new SMS messages by opening the SME chat window when a new mesage is present on page reload.
