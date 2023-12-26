@@ -18,9 +18,6 @@ function checkSms() {
         );
     }
 
-    //The number off current sms notifications
-    let count = document.getElementsByClassName("badge badge-notify")[0];
-
     console.log(msgCount.innerHTML, msgCount);
 
     // This alerts the console of new messages
@@ -51,19 +48,18 @@ function checkEmail() {
         );
     }
 
-    //The number off current sms notifications
-    let count = document.getElementsByClassName("badge badge-notify")[0];
-
     console.log(msgCount.innerHTML, msgCount);
 
     // This alerts the console of new messages
-    if (msgCount.innerHTML === "0") {
+    if (msgCount.innerHTML === "") {
         console.log("No New E-mail");
+        console.log("The E-mail count is 0");
     } else {
         console.log("You got E-mail!");
+        console.log("The E-mail count is", msgCount.innerHTML);
 
         openPage();
     }
-    console.log("The E-mail count is", msgCount.innerHTML);
+
     return;
 }
