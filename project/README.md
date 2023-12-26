@@ -1,4 +1,4 @@
-# Omnique Alert Reminder Version 1.0
+# Omnique Alert Reminder Version 1.5
 
 _If you intend to get down to buisness skip to Software Overview_ otherwise let me explain to you what a chrome extension does:
 
@@ -16,7 +16,7 @@ _If you intend to get down to buisness skip to Software Overview_ otherwise let 
 
 The purpose of this program is to remind the user that they have new SMS messages by opening the SME chat window when a new mesage is present on page reload.
 
-This chrome extension checks for new SMS messages upon reloading the web page [Omnique](https://app.omnique.com/).
+This chrome extension checks for new SMS messages and E-mail messages upon reloading the web page [Omnique](https://app.omnique.com/).
 
 It is my intention for later versions to include real time data capture via the _Mutations Observer_ for both the SMS and E-mail notifications.
 
