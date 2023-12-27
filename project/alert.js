@@ -1,6 +1,6 @@
 window.onload = function () {
     // Function that waits an amount of time before running the code so the a the page is fully rendered
-
+    // test
     setTimeout(checkSms, 500);
     setTimeout(checkEmail, 10000);
 };
