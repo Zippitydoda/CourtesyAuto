@@ -8,12 +8,15 @@
         "48": "LogoSmall_Inverted.png",
         "128": "LogoSmall_Inverted.png"
     },
-    "permissions": ["alarms", "notifications", "tabs", "activeTab"],
+    "permissions": ["scripting", "tabs", "activeTab"],
     "content_scripts": [
         {
             "matches": ["https://app.omnique.com/*"],
             "js": ["alert.js"],
             "run_at": "document_end"
         }
-    ]
+    ],
+    "background": {
+        "service_worker": "background.js"
+    }
 }
