@@ -1,22 +1,34 @@
-console.log(document.getElementById("emailnotifications"));
+setTimeout(checkSms(), 5000);
 
-const targetNode = document.getElementById("emailnotifications");
-const config = { childList: true, characterData: true, subtree: true };
+function checkSms() {
+    const targetNode = document.getElementById("smsnotifications");
+    const config = { childList: true, characterData: true, subtree: true };
+    let msgCount = document
+        .getElementById("smsnotifications")
+        .getElementsByClassName("badge badge-notify")[0].innerHTML;
+    console.log("Msg count is", msgCount);
 
-const callback = (mutationList, observer) => {
-    for (const mutation of mutationList) {
-        console.log(
-            document
-                .getElementById("emailnotifications")
-                .getElementsByClassName("badge badge-notify")[0]
-        );
-        console.log(mutationList);
-
-        if (mutation.type === "characterData") {
-        }
+    if (msgCount.innerHTML !== "0") {
+        console.log("a window will open");
     }
-};
+    const callback = (mutationList, observer) => {
+        for (const mutation of mutationList) {
+            console.log("mutationsObserver is working", msgCount);
+            if (mutation.type === "childList" && msgCount != "0") {
+                console.log("The Sms window should open");
 
-const observer = new MutationObserver(callback);
+                window.open(
+                    "https://app.omnique.com/company/427900/shop/1/messaging",
+                    "_blank"
+                );
+                console.log("Msg count is", msgCount);
+                return;
+            }
+            console.log("You have", msgCount, "new messages");
+        }
+    };
 
-observer.observe(targetNode, config);
+    const observer = new MutationObserver(callback);
+
+    setInterval(observer.observe(targetNode, config), 500);
+}
