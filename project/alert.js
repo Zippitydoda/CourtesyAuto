@@ -1,34 +1,32 @@
-setTimeout(checkSms(), 5000);
+// Select the node that will be observed for mutations
+const targetNode = document.getElementById("smsnotifications");
 
-function checkSms() {
-    const targetNode = document.getElementById("smsnotifications");
-    const config = { childList: true, characterData: true, subtree: true };
-    let msgCount = document
-        .getElementById("smsnotifications")
-        .getElementsByClassName("badge badge-notify")[0].innerHTML;
-    console.log("Msg count is", msgCount);
+// Options for the observer (which mutations to observe)
+const config = { attributes: true, childList: true, subtree: true };
 
-    if (msgCount.innerHTML !== "0") {
-        console.log("a window will open");
-    }
-    const callback = (mutationList, observer) => {
-        for (const mutation of mutationList) {
-            console.log("mutationsObserver is working", msgCount);
-            if (mutation.type === "childList" && msgCount != "0") {
-                console.log("The Sms window should open");
-
+// Callback function to execute when mutations are observed
+const callback = (mutationList, observer) => {
+    for (const mutation of mutationList) {
+        if (mutation.type === "childList") {
+            if (
+                Number(
+                    targetNode.getElementsByClassName("badge badge-notify")[0]
+                        .innerHTML
+                ) > 0
+            ) {
                 window.open(
                     "https://app.omnique.com/company/427900/shop/1/messaging",
                     "_blank"
                 );
-                console.log("Msg count is", msgCount);
+
                 return;
             }
-            console.log("You have", msgCount, "new messages");
         }
-    };
+    }
+};
 
-    const observer = new MutationObserver(callback);
+// Create an observer instance linked to the callback function
+const observer = new MutationObserver(callback);
 
-    setInterval(observer.observe(targetNode, config), 500);
-}
+// Start observing the target node for configured mutations
+observer.observe(targetNode, config);
