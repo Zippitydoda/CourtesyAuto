@@ -1,19 +1,20 @@
 // Sms notification handler
 
 // Select the node that will be observed for mutations
-const targetNode = document.getElementById("smsnotifications");
+const targetNodeSms = document.getElementById("smsnotifications");
 
 // Options for the observer (which mutations to observe)
-const config = { attributes: true, childList: true, subtree: true };
+const configSms = { attributes: true, childList: true, subtree: true };
 
 // Callback function to execute when mutations are observed
-const callback = (mutationList, observer) => {
+const callbackSms = (mutationList, observer) => {
     for (const mutation of mutationList) {
         if (mutation.type === "childList") {
             if (
                 Number(
-                    targetNode.getElementsByClassName("badge badge-notify")[0]
-                        .innerHTML
+                    targetNodeSms.getElementsByClassName(
+                        "badge badge-notify"
+                    )[0].innerHTML
                 ) > 0
             ) {
                 window.open(
@@ -28,10 +29,10 @@ const callback = (mutationList, observer) => {
 };
 
 // Create an observer instance linked to the callback function
-const observer = new MutationObserver(callback);
+const observerSms = new MutationObserver(callbackSms);
 
 // Start observing the target node for configured mutations
-observer.observe(targetNode, config);
+observerSms.observe(targetNodeSms, configSms);
 
 //--------------------------------------------------------------------------------
 // E-mail notification handler
