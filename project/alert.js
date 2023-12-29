@@ -49,7 +49,7 @@ const callbackEmail = (mutationList, observer) => {
     for (const mutation of mutationList) {
         if (mutation.type === "childList") {
             if (emailCount === "0") {
-                // set the email a count to what ever the current inner HTML reads to capture the corect mutation
+                // set the email a count to what ever the current inner HTML reads to capture the correct mutation
                 emailCount =
                     targetNodeEmail.getElementsByClassName(
                         "badge badge-notify"
