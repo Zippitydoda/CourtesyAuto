@@ -1,65 +1,75 @@
-window.onload = function () {
-    // Function that waits an amount of time before running the code so the a the page is fully rendered
+// Sms notification handler
 
-    setTimeout(checkSms, 500);
-    setTimeout(checkEmail, 10000);
+// Select the node that will be observed for mutations
+const targetNodeSms = document.getElementById("smsnotifications");
+
+// Options for the observer (which mutations to observe)
+const configSms = { attributes: true, childList: true, subtree: true };
+
+// Callback function to execute when mutations are observed
+const callbackSms = (mutationList, observer) => {
+    for (const mutation of mutationList) {
+        if (mutation.type === "childList") {
+            if (
+                Number(
+                    targetNodeSms.getElementsByClassName(
+                        "badge badge-notify"
+                    )[0].innerHTML
+                ) > 0
+            ) {
+                window.open(
+                    "https://app.omnique.com/company/427900/shop/1/messaging",
+                    "_blank"
+                );
+
+                return;
+            }
+        }
+    }
 };
 
-function checkSms() {
-    let msgCount = document
-        .getElementById("smsnotifications")
-        .getElementsByClassName("badge badge-notify")[0];
+// Create an observer instance linked to the callback function
+const observerSms = new MutationObserver(callbackSms);
 
-    // Opens the SMS chat in a new window
-    function openPage() {
-        window.open(
-            "https://app.omnique.com/company/427900/shop/1/messaging",
-            "_blank"
-        );
+// Start observing the target node for configured mutations
+observerSms.observe(targetNodeSms, configSms);
+
+//--------------------------------------------------------------------------------
+// E-mail notification handler
+
+// Select the node that will be observed for mutations
+const targetNodeEmail = document.getElementById("emailnotifications");
+let emailCount =
+    targetNodeEmail.getElementsByClassName("badge badge-notify")[0].innerHTML;
+// Options for the observer (which mutations to observe)
+const configEmail = { attributes: true, childList: true, subtree: true };
+
+// Callback function to execute when mutations are observed
+const callbackEmail = (mutationList, observer) => {
+    for (const mutation of mutationList) {
+        if (mutation.type === "childList") {
+            if (emailCount === "0") {
+                // set the email a count to what ever the current inner HTML reads to capture the correct mutation
+                emailCount =
+                    targetNodeEmail.getElementsByClassName(
+                        "badge badge-notify"
+                    )[0].innerHTML;
+
+                return;
+            }
+
+            // Open the E-mail client
+            window.open(
+                "https://app.omnique.com/Company/427900/Shop/1/Notification/RedirectToWebmail"
+            );
+
+            return;
+        }
     }
+};
 
-    console.log(msgCount.innerHTML, msgCount);
+// Create an observer instance linked to the callback function
+const observerEmail = new MutationObserver(callbackEmail);
 
-    // This alerts the console of new messages
-    if (msgCount.innerHTML === "0") {
-        console.log("No New SMS");
-    } else {
-        console.log("You got SMS!");
-
-        openPage();
-
-        return;
-    }
-    console.log("The SMS count is", msgCount.innerHTML);
-}
-
-// checks for new email upon reload
-
-function checkEmail() {
-    let msgCount = document
-        .getElementById("emailnotifications")
-        .getElementsByClassName("badge badge-notify")[0];
-
-    // Opens the E-mail in a new window
-    function openPage() {
-        window.open(
-            "https://webmail.omnique.com/a/webmail.php?wsid=3a1cfe9de638481fba6754ed256494ef-29908f6d860448feb07208ef33020759",
-            "_blank"
-        );
-    }
-
-    console.log(msgCount.innerHTML, msgCount);
-
-    // This alerts the console of new messages
-    if (msgCount.innerHTML === "") {
-        console.log("No New E-mail");
-        console.log("The E-mail count is 0");
-    } else {
-        console.log("You got E-mail!");
-        console.log("The E-mail count is", msgCount.innerHTML);
-
-        openPage();
-    }
-
-    return;
-}
+// Start observing the target node for configured mutations
+observerEmail.observe(targetNodeEmail, configEmail);
