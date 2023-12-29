@@ -14,7 +14,7 @@ _If you intend to get down to buisness skip to Software Overview_ otherwise let 
 
 ## Software Overview
 
-The purpose of this program is to remind the user that they have new SMS messages by opening the SME chat window when a new mesage is present on page reload.
+The purpose of this program is to remind the user that they have new SMS messages and Email.
 
 This chrome extension checks for new SMS messages and E-mail messages upon reloading the web page [Omnique](https://app.omnique.com/) and through changes in the DOM via the _MutationsObserver_.
 

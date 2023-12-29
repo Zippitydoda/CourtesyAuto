@@ -8,7 +8,7 @@
         "48": "LogoSmall_Inverted.png",
         "128": "LogoSmall_Inverted.png"
     },
-    "permissions": ["scripting", "tabs", "activeTab"],
+    "permissions": ["tabs", "activeTab"],
     "content_scripts": [
         {
             "matches": ["https://app.omnique.com/*"],

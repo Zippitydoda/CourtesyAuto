@@ -39,9 +39,8 @@ observerSms.observe(targetNodeSms, configSms);
 
 // Select the node that will be observed for mutations
 const targetNodeEmail = document.getElementById("emailnotifications");
-console.log(
-    targetNodeEmail.getElementsByClassName("badge badge-notify")[0].innerHTML
-);
+let emailCount =
+    targetNodeEmail.getElementsByClassName("badge badge-notify")[0].innerHTML;
 // Options for the observer (which mutations to observe)
 const configEmail = { attributes: true, childList: true, subtree: true };
 
@@ -49,6 +48,17 @@ const configEmail = { attributes: true, childList: true, subtree: true };
 const callbackEmail = (mutationList, observer) => {
     for (const mutation of mutationList) {
         if (mutation.type === "childList") {
+            if (emailCount === "0") {
+                // set the email a count to what ever the current inner HTML reads to capture the corect mutation
+                emailCount =
+                    targetNodeEmail.getElementsByClassName(
+                        "badge badge-notify"
+                    )[0].innerHTML;
+
+                return;
+            }
+
+            // Open the E-mail client
             window.open(
                 "https://app.omnique.com/Company/427900/Shop/1/Notification/RedirectToWebmail"
             );
