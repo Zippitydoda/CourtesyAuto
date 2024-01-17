@@ -39,8 +39,7 @@ observerSms.observe(targetNodeSms, configSms);
 
 // Select the node that will be observed for mutations
 const targetNodeEmail = document.getElementById("emailnotifications");
-let emailCount =
-    targetNodeEmail.getElementsByClassName("badge badge-notify")[0].innerHTML;
+let emailNode = targetNodeEmail.getElementsByClassName("badge badge-notify")[0];
 // Options for the observer (which mutations to observe)
 const configEmail = { attributes: true, childList: true, subtree: true };
 
@@ -48,9 +47,9 @@ const configEmail = { attributes: true, childList: true, subtree: true };
 const callbackEmail = (mutationList, observer) => {
     for (const mutation of mutationList) {
         if (mutation.type === "childList") {
-            if (emailCount === "0") {
+            if (emailNode.innerHTML === "0") {
                 // set the email a count to what ever the current inner HTML reads to capture the correct mutation
-                emailCount =
+                emailNode =
                     targetNodeEmail.getElementsByClassName(
                         "badge badge-notify"
                     )[0].innerHTML;
