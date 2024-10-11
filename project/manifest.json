@@ -9,6 +9,9 @@
         "128": "LogoSmall_Inverted.png"
     },
     "permissions": ["tabs", "activeTab"],
+    "background": {
+        "service_worker": "background.js"
+    },
     "content_scripts": [
         {
             "matches": ["https://app.omnique.com/*"],

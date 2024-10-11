@@ -5,12 +5,32 @@ function checkMessageCount(targetNode) {
     const smsCount =
         targetNode.getElementsByClassName("badge badge-notify")[0].innerHTML;
 
-    //console.log(chrome.windows.getAll());
+    //------------------------------------------------------------
+    let chatWindowIsOpen;
+    chrome.runtime.sendMessage({ action: "getTabs" }, function (tabs) {
+        for (let i = 0; i < tabs.length; i++) {
+            if (tabs[i].url == chatWindow) {
+                console.log("Chat window is open");
+                chatWindowIsOpen = true;
 
-    if (Number(smsCount) > 0) {
-        window.open(chatWindow, "_blank");
-        console.log("here");
-    }
+                break;
+            } else {
+                chatWindowIsOpen = false;
+                console.log("Chat window is not open");
+            }
+            console.log(tabs[i].url); // List of urls of open tabs
+        }
+        console.log(chatWindowIsOpen);
+        if (Number(smsCount) > 0 && chatWindowIsOpen == false) {
+            window.open(chatWindow, "_blank");
+        }
+        //logic for if window is already open
+        // else if( chatWindowIsOpen == true){
+        //
+        //  }
+    });
+
+    //-------------------------------------------------
 }
 // Sms notification handler
 
