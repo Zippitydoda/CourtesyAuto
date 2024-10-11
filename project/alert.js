@@ -7,27 +7,31 @@ function checkMessageCount(targetNode) {
 
     //------------------------------------------------------------
     let chatWindowIsOpen;
+    let tabId;
     chrome.runtime.sendMessage({ action: "getTabs" }, function (tabs) {
         for (let i = 0; i < tabs.length; i++) {
             if (tabs[i].url == chatWindow) {
                 console.log("Chat window is open");
+
                 chatWindowIsOpen = true;
+                tabId = tabs[i].id;
+                console.log(tabId);
 
                 break;
             } else {
                 chatWindowIsOpen = false;
                 console.log("Chat window is not open");
             }
-            console.log(tabs[i].url); // List of urls of open tabs
+            console.log(tabs[i]); // List of urls of open tabs
         }
         console.log(chatWindowIsOpen);
         if (Number(smsCount) > 0 && chatWindowIsOpen == false) {
             window.open(chatWindow, "_blank");
         }
         //logic for if window is already open
-        // else if( chatWindowIsOpen == true){
-        //
-        //  }
+        else if (chatWindowIsOpen == true) {
+            chrome.tabs.update(tabId, { highlighted: true });
+        }
     });
 
     //-------------------------------------------------
