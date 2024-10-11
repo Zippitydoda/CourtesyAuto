@@ -1,16 +1,15 @@
 //Check sms function
 function checkMessageCount(targetNode) {
-    if (
-        Number(
-            targetNode.getElementsByClassName("badge badge-notify")[0].innerHTML
-        ) > 0
-    ) {
-        window.open(
-            "https://app.omnique.com/company/427900/shop/1/messaging",
-            "_blank"
-        );
+    const chatWindow =
+        "https://app.omnique.com/company/427900/shop/1/messaging";
+    const smsCount =
+        targetNode.getElementsByClassName("badge badge-notify")[0].innerHTML;
 
-        return;
+    //console.log(chrome.windows.getAll());
+
+    if (Number(smsCount) > 0) {
+        window.open(chatWindow, "_blank");
+        console.log("here");
     }
 }
 // Sms notification handler
@@ -27,6 +26,7 @@ const callbackSms = (mutationList, observer) => {
         if (mutation.type === "childList") {
             checkMessageCount(targetNodeSms);
         }
+        return;
     }
 };
 
