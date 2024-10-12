@@ -14,7 +14,7 @@ function checkMessageCount(targetNode) {
                 console.log("Chat window is open");
 
                 chatWindowIsOpen = true;
-                tabId = tabs[i].id;
+                tabId = tabs[i].windowId;
                 console.log(tabId);
 
                 break;
@@ -25,12 +25,13 @@ function checkMessageCount(targetNode) {
             console.log(tabs[i]); // List of urls of open tabs
         }
         console.log(chatWindowIsOpen);
+        //GET WINDOW TO OPEN IN A NEW WINDOW NOT TAB
         if (Number(smsCount) > 0 && chatWindowIsOpen == false) {
             window.open(chatWindow, "_blank");
         }
-        //logic for if window is already open
-        else if (chatWindowIsOpen == true) {
-            chrome.tabs.update(tabId, { highlighted: true });
+        //logic for if window is already open ADD LOGIC FOR SMS COUNT
+        else if (chatWindowIsOpen == true && Number(smsCount) > 0) {
+            chrome.runtime.sendMessage({ action: "focus window", tabId });
         }
     });
 
