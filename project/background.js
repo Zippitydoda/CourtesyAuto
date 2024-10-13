@@ -1,5 +1,4 @@
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    let tabs;
     if (request.action === "getTabs") {
         chrome.tabs.query({}, function (tabs) {
             sendResponse(tabs);

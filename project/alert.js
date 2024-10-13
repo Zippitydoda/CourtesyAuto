@@ -11,8 +11,6 @@ function checkMessageCount(targetNode) {
     chrome.runtime.sendMessage({ action: "getTabs" }, function (tabs) {
         for (let i = 0; i < tabs.length; i++) {
             if (tabs[i].url == chatWindow) {
-                console.log("Chat window is open");
-
                 chatWindowIsOpen = true;
                 tabId = tabs[i].id;
                 windowId = tabs[i].windowId;
@@ -21,12 +19,11 @@ function checkMessageCount(targetNode) {
                 break;
             } else {
                 chatWindowIsOpen = false;
-                console.log("Chat window is not open");
             }
             //console.log(tabs[i]); // List of urls of open tabs
         }
-        console.log(chatWindowIsOpen);
-        //GET WINDOW TO OPEN IN A NEW WINDOW NOT TAB
+        console.log("Chat window Open", chatWindowIsOpen);
+        //TODO GET WINDOW TO OPEN IN A NEW WINDOW NOT TAB
         if (Number(smsCount) > 0 && chatWindowIsOpen == false) {
             window.open(chatWindow, "_blank");
         }
@@ -64,6 +61,7 @@ const callbackSms = (mutationList, observer) => {
 const observerSms = new MutationObserver(callbackSms);
 
 // Start observing the target node for configured mutations
+
 observerSms.observe(targetNodeSms, configSms);
 
 //--------------------------------------------------------------------------------
