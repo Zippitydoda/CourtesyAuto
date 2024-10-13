@@ -1,4 +1,5 @@
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    // get all the tabs
     if (request.action === "getTabs") {
         chrome.tabs.query({}, function (tabs) {
             sendResponse(tabs);

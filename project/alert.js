@@ -26,7 +26,6 @@ function checkMessageCount(targetNode) {
         console.log("Chat window Open", chatWindowIsOpen);
         //TODO GET WINDOW TO OPEN IN A NEW WINDOW NOT TAB
 
-        //logic for if window is already open ADD LOGIC FOR SMS COUNT
         if (Number(smsCount) > 0) {
             chrome.runtime.sendMessage({
                 action: "open chat",
