@@ -14,7 +14,8 @@ function checkMessageCount(targetNode) {
                 console.log("Chat window is open");
 
                 chatWindowIsOpen = true;
-                tabId = tabs[i].windowId;
+                tabId = tabs[i].id;
+                windowId = tabs[i].windowId;
                 console.log(tabId);
 
                 break;
@@ -22,7 +23,7 @@ function checkMessageCount(targetNode) {
                 chatWindowIsOpen = false;
                 console.log("Chat window is not open");
             }
-            console.log(tabs[i]); // List of urls of open tabs
+            //console.log(tabs[i]); // List of urls of open tabs
         }
         console.log(chatWindowIsOpen);
         //GET WINDOW TO OPEN IN A NEW WINDOW NOT TAB
@@ -31,7 +32,11 @@ function checkMessageCount(targetNode) {
         }
         //logic for if window is already open ADD LOGIC FOR SMS COUNT
         else if (chatWindowIsOpen == true && Number(smsCount) > 0) {
-            chrome.runtime.sendMessage({ action: "focus window", tabId });
+            chrome.runtime.sendMessage({
+                action: "focus window",
+                tabId,
+                windowId,
+            });
         }
     });
 
@@ -62,8 +67,9 @@ const observerSms = new MutationObserver(callbackSms);
 observerSms.observe(targetNodeSms, configSms);
 
 //--------------------------------------------------------------------------------
-// E-mail notification handler
 
+// E-mail notification handler THIS CURRENTLY DOSN'T WORK DUE TO THE E-MAIL NOTIFICATIONS BEING BROKEN ON THE WEB APP
+/*
 // Select the node that will be observed for mutations
 const targetNodeEmail = document.getElementById("emailnotifications");
 let emailCount =
@@ -100,3 +106,4 @@ const observerEmail = new MutationObserver(callbackEmail);
 
 // Start observing the target node for configured mutations
 observerEmail.observe(targetNodeEmail, configEmail);
+*/
