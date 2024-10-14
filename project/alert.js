@@ -15,16 +15,13 @@ function checkMessageCount(targetNode) {
                 chatWindowIsOpen = true;
                 tabId = tabs[i].id;
                 windowId = tabs[i].windowId;
-                console.log(tabId);
 
                 break;
             } else {
                 chatWindowIsOpen = false;
             }
-            //console.log(tabs[i]); // List of urls of open tabs
         }
         console.log("Chat window Open", chatWindowIsOpen);
-        //TODO GET WINDOW TO OPEN IN A NEW WINDOW NOT TAB
 
         if (Number(smsCount) > 0) {
             chrome.runtime.sendMessage({
