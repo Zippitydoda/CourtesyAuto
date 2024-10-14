@@ -60,9 +60,9 @@ const callbackSms = (mutationList, observer) => {
 const observerSms = new MutationObserver(callbackSms);
 
 // Start observing the target node for configured mutations
-
-observerSms.observe(targetNodeSms, configSms);
-
+try {
+    observerSms.observe(targetNodeSms, configSms);
+} catch (TypeError) {}
 //--------------------------------------------------------------------------------
 
 // E-mail notification handler THIS CURRENTLY DOSN'T WORK DUE TO THE E-MAIL NOTIFICATIONS BEING BROKEN ON THE WEB APP

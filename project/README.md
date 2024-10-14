@@ -1,4 +1,4 @@
-# Omnique Alert Reminder Version 2
+# Omnique Alert Reminder Version 2.1
 
 _If you intend to get down to buisness skip to Software Overview_ otherwise let me explain to you what a chrome extension does:
 
@@ -11,6 +11,11 @@ _If you intend to get down to buisness skip to Software Overview_ otherwise let 
 > Extension files are zipped into a single .crx package that the user downloads and installs. This means extensions do not depend on content from the web, unlike ordinary web apps.
 
 > Extensions are distributed through the Chrome Developer Dashboard and published to the Chrome Web Store
+
+## Updates
+
+> Currently the E-mail checking function is inoperable due to not working on the web app side
+> Version 2.1 now will only open one chat window per any number of messages versus opening a new window for every new message.
 
 ## Software Overview
 
