@@ -1,4 +1,4 @@
-# Omnique Alert Reminder Version 2.1
+# Omnique Alert Reminder Version 2.2
 
 _If you intend to get down to buisness skip to Software Overview_ otherwise let me explain to you what a chrome extension does:
 
