@@ -1,6 +1,6 @@
 # Omnique Alert Reminder Version 2.2
 
-_If you intend to get down to buisness skip to Software Overview_ otherwise let me explain to you what a chrome extension does:
+_If you intend to get down to business skip to Software Overview_ otherwise let me explain to you what a chrome extension does:
 
 > Chrome Extensions are small software programs that customize the browsing experience. They enable users to tailor Chrome functionality and behavior to individual needs or preferences. They are built on web technologies such as HTML, JavaScript, and CSS.
 
@@ -14,26 +14,25 @@ _If you intend to get down to buisness skip to Software Overview_ otherwise let 
 
 ## Updates
 
-> Currently the E-mail checking function is inoperable due to not working on the web app side
-> Version 2.1 now will only open one chat window per any number of messages versus opening a new window for every new message.
+> Currently the email checking function is inoperable due to not working on the web app side
 
 ## Software Overview
 
-The purpose of this program is to remind the user that they have new SMS messages and Email.
+The purpose of this program is to remind the user that they have new SMS messages.
 
-This chrome extension checks for new SMS messages and E-mail messages upon reloading the web page [Omnique](https://app.omnique.com/) and through changes in the DOM via the _MutationsObserver_.
+This chrome extension checks for new SMS messages [Omnique](https://app.omnique.com/) through changes in the DOM via the _MutationsObserver_.
 
-## Implitation Notes
+## Implementation Notes
 
-This chrome extension is _only usable_ with the web page [Omnique](https://app.omnique.com/) (As per use of the Manifest file _all other web site will be useless to this extension_)
+This Chrome extension is _only usable_ with the web page [Omnique](https://app.omnique.com/) (As per use of the Manifest file _all other websites will be useless to this extension_)
 
 ## Running this extension
 
 1. Clone this repository.
 2. Load this directory in Chrome as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked).
 3. To ensure the extension is running properly check the web page console to see if the SMS count matches the SMS notification badge in the upper right hand corner of the page.
-4. The notification should show: ![SMS notification badge](zeroMessage.png)
+4. The notification should show: ![SMS notification badge](zeroMessage.png).
 5. Send a test text message to the chat.
-6. Wait for the message to be marked as received in the upper right hand corner of the page.
+6. Wait for the message to be marked as received in the upper right-hand corner of the page.
 7. The notification should now show: ![New SMS](newMessage.png)
-8. Refresh the page, if the extension is working properly the chat window should open displaying the new Message in a new tab.
+8. If the extension is working properly, a new chat window will open for each new message received, and the previous chat window will close.
